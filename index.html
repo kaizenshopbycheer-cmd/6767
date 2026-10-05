@@ -86,14 +86,14 @@ footer{padding:40px 0 50px;text-align:center;color:var(--mu);font-size:.9rem}a{c
 <form id="f" class="rv">
 <label>ชื่อ<input name="name" required></label>
 <label>ชื่อ Discord<input name="discord" required></label>
-<label>ช่องทางที่สั่ง (หากเป็น ticket กรอกเลขด้วย)<input name="contact" required></label>
+<label>ช่องทางที่สั่ง (หากเป็น ticket กรอกเลขด้วย)<input name="contact" required placeholder="เช่น Discord ticket #1234, Facebook"></label>
 <label>ประเภทงาน<select name="cat" id="cat" required></select></label>
 <label>ความเร็ว<select name="speed"><option>ปกติ · 1-2 วัน</option><option>เร็ว x2 · ส่งภายใน 1 วัน</option><option>ด่วน x3 · เริ่มทำทันที</option></select></label>
 <label>งบประมาณ (บาท)<input name="budget" inputmode="numeric"></label>
 <label class="full">รายละเอียดงาน<textarea name="detail" required placeholder="บอกสิ่งที่ต้องการ ธีม สี ฯลฯ"></textarea></label>
 <label class="full">หมายเหตุเพิ่มเติม<textarea name="note" style="min-height:70px"></textarea></label>
 <div class="full row"><button class="btn" type="submit" id="sub">🚀 ส่งออเดอร์</button></div>
-<p class="full note">ส่งแล้วจะได้รหัสออเดอร์ไว้เช็กคิว ร้านจะติดต่อกลับทาง Discord หรือช่องทางที่คุณกรอก</p>
+<p class="full note">ส่งแล้วจะได้รหัสออเดอร์ไว้เช็กคิว ร้านจะติดต่อกลับทาง Discord</p>
 <p class="full" id="msg"></p></form></div></section>
 
 <section id="queue"><div class="wrap"><h2 class="rv"><small>Queue</small>เช็กคิว</h2>
@@ -172,10 +172,10 @@ $('f').addEventListener('submit',async e=>{
   const f=e.target,v=n=>f.elements[n].value.trim(),id=code(),m=$('msg');
   $('sub').disabled=true;say(m,'กำลังส่ง...');
   try{
-    await setDoc(doc(db,'orders',id),{name:v('name'),discord:v('discord'),contact:v('contact'),cat:v('cat'),speed:v('speed'),budget:v('budget'),deadline:v('deadline'),detail:v('detail'),note:v('note'),status:'รอชำระเงิน',createdAt:serverTimestamp()});
+    await setDoc(doc(db,'orders',id),{name:v('name'),discord:v('discord'),contact:v('contact'),cat:v('cat'),speed:v('speed'),budget:v('budget'),detail:v('detail'),note:v('note'),status:'รอชำระเงิน',createdAt:serverTimestamp()});
     await setDoc(doc(db,'track',id),{type:v('cat'),status:'รอชำระเงิน'});
     say(m,'ส่งออเดอร์แล้ว รหัสออเดอร์ของคุณคือ '+id+' (จดไว้เช็กคิว)');f.reset();
-  }catch(err){say(m,'ส่งไม่สำเร็จ ลองใหม่อีกครั้ง หรือติดต่อร้านทาง Discord')}
+  }catch(err){console.error(err);say(m,'ส่งไม่สำเร็จ ['+(err&&(err.code||err.message)||'unknown')+'] ลองใหม่อีกครั้ง หรือติดต่อร้านทาง Discord')}
   $('sub').disabled=false;
 });
 
@@ -207,7 +207,7 @@ if(ready){
     say($('amsg'),'');
     unsub.push(onSnapshot(query(collection(db,'orders'),orderBy('createdAt','desc')),s=>{
       orders=s.docs.map(d=>({id:d.id,...d.data()}));
-      $('atb').innerHTML=orders.map(o=>'<tr><td>'+esc(o.id)+'</td><td>'+esc(o.name)+'<br><span class="note">'+esc(o.discord)+'</span></td><td>'+esc(o.cat)+'<br><span class="note">'+esc(o.speed)+(o.budget?' · '+esc(o.budget)+' บาท':'')+'</span><details><summary class="note">รายละเอียด</summary>'+esc(o.detail)+(o.note?'<br>หมายเหตุ: '+esc(o.note):'')+'<br>ติดต่อ: '+esc(o.contact)+(o.deadline?'<br>กำหนดส่ง: '+esc(o.deadline):'')+'</details></td><td><select data-a="st" data-id="'+esc(o.id)+'" style="padding:4px">'+ST.map(x=>'<option'+(x===o.status?' selected':'')+'>'+x+'</option>').join('')+'</select></td><td><button class="btn ghost sm" data-a="del" data-id="'+esc(o.id)+'" type="button">ลบ</button></td></tr>').join('');
+      $('atb').innerHTML=orders.map(o=>'<tr><td>'+esc(o.id)+'</td><td>'+esc(o.name)+'<br><span class="note">'+esc(o.discord)+'</span></td><td>'+esc(o.cat)+'<br><span class="note">'+esc(o.speed)+(o.budget?' · '+esc(o.budget)+' บาท':'')+'</span><details><summary class="note">รายละเอียด</summary>'+esc(o.detail)+(o.note?'<br>หมายเหตุ: '+esc(o.note):'')+'<br>ช่องทางที่สั่ง: '+esc(o.contact)+'</details></td><td><select data-a="st" data-id="'+esc(o.id)+'" style="padding:4px">'+ST.map(x=>'<option'+(x===o.status?' selected':'')+'>'+x+'</option>').join('')+'</select></td><td><button class="btn ghost sm" data-a="del" data-id="'+esc(o.id)+'" type="button">ลบ</button></td></tr>').join('');
     }));
     unsub.push(onSnapshot(collection(db,'members'),s=>{
       $('amb').innerHTML=s.docs.map(d=>{const m=d.data();return '<tr><td>'+esc(m.discord)+'</td><td>'+Number(m.points)+'</td><td><button class="btn ghost sm" data-a="dm" data-id="'+esc(d.id)+'" type="button">ลบ</button></td></tr>'}).join('');
