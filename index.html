@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="th"><head><meta charset="utf-8"><title>KAIZEN SHOP</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600&family=Kanit:wght@500;600;700&display=swap">
+<style>
+:root{--bg:#06050d;--sf:rgba(20,16,38,.72);--ln:rgba(139,140,255,.28);--fg:#f6f3ff;--mu:#a9a3c9;--ac:#8b8cff;--hi:#cbbcff;--pk:#ff9ad5;--ok:#58f0b0;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:70px}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.65 'Anuphan','Noto Sans Thai',system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3{font-family:'Kanit','Anuphan',system-ui,sans-serif;margin:0;line-height:1.15}
+#sky{position:fixed;inset:0;z-index:-2;width:100%;height:100%}
+.aur{position:fixed;z-index:-1;border-radius:50%;filter:blur(90px);opacity:.38;animation:fl 18s ease-in-out infinite alternate}
+.a1{width:46vw;height:46vw;left:-12vw;top:-10vw;background:#5a4bff}.a2{width:40vw;height:40vw;right:-10vw;top:30vh;background:#c04bff;animation-delay:-6s}.a3{width:36vw;height:36vw;left:20vw;bottom:-14vw;background:#3b7bff;animation-delay:-11s}
+@keyframes fl{to{transform:translate(8vw,6vh) scale(1.2)}}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--ac),var(--pk));z-index:60;box-shadow:0 0 12px var(--ac)}
+nav{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:10px 18px;backdrop-filter:blur(14px);background:rgba(6,5,13,.55);border-bottom:1px solid var(--ln)}
+nav b{font:700 1.2rem 'Kanit',sans-serif;letter-spacing:.08em;background:linear-gradient(90deg,#fff,var(--ac));-webkit-background-clip:text;background-clip:text;color:transparent}
+nav div a{color:var(--mu);text-decoration:none;margin-left:16px;font-size:.9rem;transition:.2s}nav div a:hover{color:#fff;text-shadow:0 0 12px var(--ac)}
+@media(max-width:560px){nav div a:nth-child(n+4){display:none}}
+.wrap{max-width:960px;margin:auto;padding:0 16px}
+.hero{position:relative;text-align:center;padding:70px 0 46px;min-height:78vh;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.moon{position:absolute;right:6%;top:6%;width:min(34vw,220px);filter:drop-shadow(0 0 30px #b9b7ff);animation:fl2 7s ease-in-out infinite alternate;z-index:-1}
+@keyframes fl2{to{transform:translateY(22px) rotate(8deg)}}
+.chip{border:1px solid var(--ln);border-radius:99px;padding:5px 16px;color:var(--hi);font-size:.85rem;background:var(--sf);animation:pu 2.4s infinite}
+@keyframes pu{50%{box-shadow:0 0 22px rgba(139,140,255,.55)}}
+h1{font-size:clamp(3.4rem,17vw,8.5rem);font-weight:700;letter-spacing:-.02em;margin:14px 0 0;position:relative;color:#fff;text-shadow:0 0 30px rgba(139,140,255,.8),0 0 80px rgba(139,140,255,.5);animation:gl 5s infinite}
+h1:before,h1:after{content:attr(data-t);position:absolute;left:0;right:0;opacity:.0}
+h1:before{color:var(--pk);animation:g1 5s infinite}h1:after{color:#6ae1ff;animation:g2 5s infinite}
+@keyframes g1{0%,92%,100%{opacity:0}93%{opacity:.8;transform:translate(-4px,2px)}96%{opacity:.8;transform:translate(3px,-2px)}}
+@keyframes g2{0%,92%,100%{opacity:0}94%{opacity:.8;transform:translate(4px,-2px)}97%{opacity:.8;transform:translate(-3px,2px)}}
+@keyframes gl{50%{text-shadow:0 0 40px rgba(255,154,213,.7),0 0 90px rgba(139,140,255,.6)}}
+.sh{display:block;font-size:.42em;background:linear-gradient(90deg,#6d6dff,#ff9ad5,#6d6dff);background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;animation:sm 3s linear infinite;margin-top:-.15em}
+@keyframes sm{to{background-position:200%}}
+#ty{min-height:1.8em;color:var(--hi);font-size:1.15rem;margin:14px 0 22px}#ty:after{content:"▍";animation:bl 1s infinite}@keyframes bl{50%{opacity:0}}
+.row{display:flex;gap:10px;flex-wrap:wrap}.c{justify-content:center}
+.btn{position:relative;overflow:hidden;display:inline-block;border:0;border-radius:12px;padding:12px 24px;font:600 1rem 'Anuphan',sans-serif;color:#fff;cursor:pointer;text-decoration:none;background:linear-gradient(135deg,#6d6dff,#b06dff);box-shadow:0 0 22px rgba(139,140,255,.5);transition:.25s}
+.btn:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 0 38px rgba(176,109,255,.85)}.btn:before{content:"";position:absolute;top:0;left:-70%;width:40%;height:100%;background:rgba(255,255,255,.35);transform:skewX(-20deg);animation:sw 3.2s infinite}
+@keyframes sw{60%,100%{left:130%}}
+.btn.ghost{background:transparent;border:1px solid var(--ln);box-shadow:none}.btn.ghost:hover{border-color:var(--ac);box-shadow:0 0 24px rgba(139,140,255,.5)}.btn.ghost:before{display:none}.sm{padding:6px 12px;font-size:.85rem;border-radius:9px}
+.rp{position:absolute;border-radius:50%;background:rgba(255,255,255,.5);transform:scale(0);animation:rp .6s linear;pointer-events:none}@keyframes rp{to{transform:scale(4);opacity:0}}
+.mq{overflow:hidden;border-block:1px solid var(--ln);background:rgba(139,140,255,.08);padding:10px 0;white-space:nowrap}
+.mq div{display:inline-block;animation:mq 22s linear infinite;color:var(--hi);font-weight:500}@keyframes mq{to{transform:translateX(-50%)}}
+section{padding:54px 0}h2{font-size:clamp(1.7rem,6vw,2.5rem);margin-bottom:6px;text-shadow:0 0 22px rgba(139,140,255,.6)}h2 small{display:block;font:500 .8rem 'Anuphan';color:var(--ac);letter-spacing:.2em;text-transform:uppercase}
+.note{color:var(--mu);font-size:.9rem}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin-top:20px;perspective:900px}
+.pc,.card{position:relative;background:var(--sf);border:1px solid var(--ln);border-radius:18px;padding:22px 18px;backdrop-filter:blur(8px);transition:transform .15s,border-color .3s,box-shadow .3s;transform:rotateX(var(--rx,0)) rotateY(var(--ry,0));overflow:hidden}
+.pc:before,.card:before{content:"";position:absolute;inset:0;background:radial-gradient(180px circle at var(--mx,50%) var(--my,0%),rgba(139,140,255,.28),transparent 70%);opacity:0;transition:.3s}
+.pc:hover,.card:hover{border-color:var(--ac);box-shadow:0 0 34px rgba(139,140,255,.4)}.pc:hover:before,.card:hover:before{opacity:1}
+.pc i{font-size:1.8rem;font-style:normal;display:block;animation:bo 3s ease-in-out infinite}@keyframes bo{50%{transform:translateY(-6px) rotate(8deg)}}
+.pc h3{font-size:1rem;margin:8px 0 10px;font-weight:500}.pr{font:700 1.9rem 'Kanit';background:linear-gradient(90deg,#fff,var(--ac));-webkit-background-clip:text;background-clip:text;color:transparent}
+.tag{font:600 1.4rem 'Kanit';color:var(--hi)}.card p{margin:6px 0 0;color:var(--mu)}
+.big{margin-top:16px;text-align:center;border-style:dashed}
+.rv{opacity:0;transform:translateY(34px) scale(.96);transition:opacity .7s var(--d,0ms),transform .7s var(--d,0ms)}.rv.in{opacity:1;transform:none}
+form{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:18px;padding:22px;border-radius:20px;background:var(--sf);border:1px solid var(--ln);backdrop-filter:blur(10px)}
+label{display:flex;flex-direction:column;gap:6px;font-weight:500}.full{grid-column:1/-1}
+input,select,textarea{background:rgba(6,5,13,.7);color:var(--fg);border:1px solid var(--ln);border-radius:11px;padding:11px 13px;font:inherit;width:100%;transition:.25s}
+textarea{min-height:110px;resize:vertical}input:focus,select:focus,textarea:focus{outline:0;border-color:var(--ac);box-shadow:0 0 0 3px rgba(139,140,255,.3),0 0 22px rgba(139,140,255,.4)}
+#msg,#amsg{color:var(--ok);min-height:1.4em}
+.res{background:var(--sf);border:1px solid var(--ln);border-radius:12px;padding:12px 14px;margin-top:10px;animation:pop .4s}@keyframes pop{from{transform:scale(.9);opacity:0}}
+.pill{display:inline-block;border:1px solid var(--hi);color:var(--hi);border-radius:99px;padding:1px 12px;font-size:.85rem;box-shadow:0 0 12px rgba(203,188,255,.3)}
+.tw{overflow-x:auto}table{width:100%;border-collapse:collapse;margin-top:10px}th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--ln);font-size:.9rem;vertical-align:top}
+footer{padding:40px 0 50px;text-align:center;color:var(--mu);font-size:.9rem}a{color:var(--hi)}
+.sp{position:fixed;pointer-events:none;z-index:70;font-size:14px;animation:sp .8s forwards}@keyframes sp{to{transform:translate(var(--x),var(--y)) scale(.2) rotate(180deg);opacity:0}}
+#cf{position:fixed;inset:0;pointer-events:none;z-index:80;width:100%;height:100%}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style></head><body>
+<canvas id="sky"></canvas><canvas id="cf"></canvas><div class="aur a1"></div><div class="aur a2"></div><div class="aur a3"></div><div id="bar"></div>
+<nav><b>KAIZEN ✦</b><div><a href="#price">ราคา</a><a href="#order">สั่งงาน</a><a href="#queue">เช็กคิว</a><a href="#points">แต้ม</a></div></nav>
+<header class="hero wrap">
+<svg class="moon" viewBox="0 0 100 100"><defs><radialGradient id="mg" cx="35%" cy="35%"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#8b8cff"/></radialGradient></defs><path d="M62 8a42 42 0 1 0 30 70A34 34 0 0 1 62 8z" fill="url(#mg)"/></svg>
+<span class="chip">✦ Discord Server Studio ✦</span>
+<h1 data-t="KAIZEN">KAIZEN<span class="sh">SHOP</span></h1>
+<div id="ty"></div>
+<div class="row c"><a class="btn" href="#order">✨ สั่งงานเลย</a><a class="btn ghost" href="#price">ดูราคา</a><a class="btn ghost" href="https://discord.gg/Q589MD6d33" target="_blank" rel="noopener">เข้า Discord</a></div>
+</header>
+<div class="mq"><div>✦ สั่งก่อน 20:00 ได้งานภายในวันที่สั่งทุกคิว ✦ มีแบบราคาตามงบ ลูกค้ามีเท่าไหร่จ่ายเท่านั้น ✦ KAIZEN SHOP ✦ สั่งก่อน 20:00 ได้งานภายในวันที่สั่งทุกคิว ✦ มีแบบราคาตามงบ ลูกค้ามีเท่าไหร่จ่ายเท่านั้น ✦ KAIZEN SHOP ✦</div></div>
+
+<section id="price"><div class="wrap"><h2 class="rv"><small>Price list</small>เรทราคาทำเซิร์ฟเวอร์ Discord</h2>
+<div class="grid" id="pg"></div>
+<div class="card big rv">💜 มีแบบราคาตามงบ ลูกค้ามีเท่าไหร่จ่ายเท่านั้น ทางร้านจะจัดทุกอย่างให้ตามเงินที่โอนมาเลย</div></div></section>
+
+<section id="speed"><div class="wrap"><h2 class="rv"><small>Speed</small>ความเร็วในการทำงาน</h2>
+<div class="grid"><div class="card rv"><span class="tag">ปกติ</span><p>ส่งงานภายใน 1-2 วัน ราคามาตรฐาน</p></div><div class="card rv" style="--d:100ms"><span class="tag">เร็ว x2</span><p>ส่งงานภายใน 1 วัน ราคาคูณ 2</p></div><div class="card rv" style="--d:200ms"><span class="tag">ด่วน x3</span><p>เริ่มทำทันที ราคาคูณ 3</p></div></div>
+<p class="note rv" style="margin-top:12px">เริ่มคิวหลังชำระเงินเต็มจำนวนเท่านั้น ร้านจะติดต่อกลับพร้อมยืนยันราคาและช่องทางชำระเงิน</p></div></section>
+
+<section id="order"><div class="wrap"><h2 class="rv"><small>Order</small>สั่งงาน</h2>
+<form id="f" class="rv">
+<label>ชื่อ<input name="name" required></label>
+<label>ชื่อ Discord<input name="discord" required></label>
+<label>อีเมลหรือช่องทางติดต่อกลับ<input name="contact" required></label>
+<label>ประเภทงาน<select name="cat" id="cat" required></select></label>
+<label>ความเร็ว<select name="speed"><option>ปกติ · 1-2 วัน</option><option>เร็ว x2 · ส่งภายใน 1 วัน</option><option>ด่วน x3 · เริ่มทำทันที</option></select></label>
+<label>งบประมาณ (บาท)<input name="budget" inputmode="numeric"></label>
+<label>กำหนดส่ง<input name="deadline" type="date"></label>
+<label class="full">รายละเอียดงาน<textarea name="detail" required placeholder="บอกสิ่งที่ต้องการ ธีม สี ฯลฯ"></textarea></label>
+<label class="full">หมายเหตุเพิ่มเติม<textarea name="note" style="min-height:70px"></textarea></label>
+<div class="full row"><button class="btn" type="submit" id="sub">🚀 ส่งออเดอร์</button></div>
+<p class="full note">ส่งแล้วจะได้รหัสออเดอร์ไว้เช็กคิว ร้านจะติดต่อกลับทาง Discord หรือช่องทางที่คุณกรอก</p>
+<p class="full" id="msg"></p></form></div></section>
+
+<section id="queue"><div class="wrap"><h2 class="rv"><small>Queue</small>เช็กคิว</h2>
+<p class="note">ตอนนี้มีงานในคิว <b id="qc" style="color:var(--hi);font-size:1.3rem">-</b> งาน</p>
+<div class="row"><input id="qin" placeholder="รหัสออเดอร์ (เช่น KZ-AB12CD)" style="flex:1;min-width:220px"><button class="btn" id="qbtn" type="button">เช็กคิว</button></div><div id="qout"></div></div></section>
+
+<section id="points"><div class="wrap"><h2 class="rv"><small>Member points</small>แต้มสมาชิก</h2>
+<div class="row"><input id="pin" placeholder="ชื่อ Discord ของคุณ" style="flex:1;min-width:220px"><button class="btn" id="pbtn" type="button">เช็กแต้ม</button></div><div id="pout"></div></div></section>
+
+<section id="admin" hidden><div class="wrap"><h2>หลังบ้านร้าน <span class="pill">เจ้าของร้าน</span></h2>
+<div id="login" class="row"><input id="em" type="email" placeholder="อีเมล" style="flex:1;min-width:180px"><input id="pw" type="password" placeholder="รหัสผ่าน" style="flex:1;min-width:140px"><button class="btn" id="lbtn" type="button">เข้าสู่ระบบ</button></div>
+<div id="panel" hidden><div class="row" style="justify-content:space-between;align-items:center"><h3>ออเดอร์</h3><button class="btn ghost sm" id="lout" type="button">ออกจากระบบ</button></div>
+<div class="tw"><table><thead><tr><th>รหัส</th><th>ลูกค้า</th><th>งาน</th><th>สถานะ</th><th></th></tr></thead><tbody id="atb"></tbody></table></div>
+<h3 style="margin-top:22px">สมาชิก / แต้ม</h3><div class="tw"><table><thead><tr><th>Discord</th><th>แต้ม</th><th></th></tr></thead><tbody id="amb"></tbody></table></div>
+<div class="row" style="margin-top:10px"><input id="md" placeholder="Discord สมาชิก" style="flex:1;min-width:140px"><input id="mp" inputmode="numeric" placeholder="แต้ม" style="width:110px"><button class="btn sm" id="madd" type="button">บันทึกแต้ม</button></div></div>
+<p id="amsg" class="note"></p></div></section>
+
+<footer><div class="wrap">✦ KAIZEN SHOP ✦<br>Facebook: 카이젠 (Kaizen Shop) · <a href="https://discord.gg/Q589MD6d33" target="_blank" rel="noopener">Discord</a> · <a href="#admin" id="adl">เจ้าของร้าน</a></div></footer>
+
+<script>
+(()=>{
+const $=i=>document.getElementById(i),RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const PKG=[["ดิสไม่มีระบบ 10+ (ห้องเปล่าๆ)",0,"🌙"],["ดิสส่วนตัว",99,"💜"],["ดิสกิลล์",109,"⚔️"],["ดิสแคลน",109,"🛡️"],["ดิสแก๊ง",109,"🔥"],["ดิสร้านค้า",159,"🛍️"],["ดิสสตรีมเมอร์",199,"🎥"],["ดิสคอมมูนิตี้",299,"🌸"],["ดิสประเทศ",399,"👑"],["ดิสแนวโรลเพลย์ ห้อง/ระบบเยอะ",699,"🎭"]];
+$('pg').innerHTML=PKG.map((p,i)=>'<div class="pc rv" style="--d:'+i*70+'ms"><i>'+p[2]+'</i><h3>'+p[0]+'</h3><b class="pr" data-n="'+p[1]+'">'+(p[1]?p[1]+'.-':'สอบถามราคา')+'</b></div>').join('');
+$('cat').innerHTML=PKG.map(p=>'<option>'+p[0]+'</option>').join('')+'<option>อื่นๆ / ตามงบ (ระบุในรายละเอียด)</option>';
+/* typing */
+const W=['ทำเซิร์ฟ Discord สวยๆ ตามงบคุณ','สั่งก่อน 20:00 ได้งานภายในวันนี้','มีเท่าไหร่ จ่ายเท่านั้น 💜'];let wi=0,ci=0,del=0;
+(function t(){const w=W[wi];ci+=del?-1:1;$('ty').textContent=w.slice(0,ci);let d=del?30:70;if(!del&&ci===w.length){del=1;d=1600}else if(del&&ci===0){del=0;wi=(wi+1)%W.length;d=400}setTimeout(t,d)})();
+/* reveal + count */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('in');io.unobserve(e.target);const p=e.target.querySelector('.pr');const n=p&&+p.dataset.n;if(n&&!RM){let s=null;const f=ts=>{s=s||ts;const k=Math.min((ts-s)/900,1);p.textContent=Math.round(n*(1-Math.pow(1-k,3)))+'.-';if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(e=>io.observe(e));
+/* tilt + spotlight */
+document.addEventListener('pointermove',e=>{const c=e.target.closest&&e.target.closest('.pc,.card');if(!c||e.pointerType==='touch')return;const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;c.style.setProperty('--mx',x*100+'%');c.style.setProperty('--my',y*100+'%');c.style.setProperty('--ry',(x-.5)*14+'deg');c.style.setProperty('--rx',(.5-y)*14+'deg')});
+document.addEventListener('pointerout',e=>{const c=e.target.closest&&e.target.closest('.pc,.card');if(c){c.style.setProperty('--rx','0deg');c.style.setProperty('--ry','0deg')}});
+/* ripple */
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('.btn');if(!b)return;const r=b.getBoundingClientRect(),s=document.createElement('span'),z=Math.max(r.width,r.height);s.className='rp';s.style.cssText='width:'+z+'px;height:'+z+'px;left:'+(e.clientX-r.left-z/2)+'px;top:'+(e.clientY-r.top-z/2)+'px';b.appendChild(s);setTimeout(()=>s.remove(),600)});
+/* progress */
+addEventListener('scroll',()=>{$('bar').style.width=scrollY/(document.documentElement.scrollHeight-innerHeight)*100+'%'},{passive:true});
+/* sparkle trail */
+if(!RM&&matchMedia('(pointer:fine)').matches){let lt=0;const E=['✦','✧','💜','⋆'];addEventListener('pointermove',e=>{const n=performance.now();if(n-lt<70)return;lt=n;const s=document.createElement('span');s.className='sp';s.textContent=E[Math.random()*4|0];s.style.cssText='left:'+e.clientX+'px;top:'+e.clientY+'px;color:'+(Math.random()>.5?'#cbbcff':'#ff9ad5')+';--x:'+(Math.random()*40-20)+'px;--y:'+(20+Math.random()*30)+'px';document.body.appendChild(s);setTimeout(()=>s.remove(),800)})}
+/* starfield */
+const cv=$('sky'),g=cv.getContext('2d');let W2,H2,S=[],mx=0,my=0,sh=null;
+function rs(){W2=cv.width=innerWidth;H2=cv.height=innerHeight;S=Array.from({length:Math.min(170,W2/6|0)},()=>({x:Math.random()*W2,y:Math.random()*H2,r:Math.random()*1.5+.3,p:Math.random()*6,z:Math.random()*.9+.1}))}
+rs();addEventListener('resize',rs);addEventListener('pointermove',e=>{mx=e.clientX/W2-.5;my=e.clientY/H2-.5});
+(function dr(t){g.clearRect(0,0,W2,H2);S.forEach(s=>{const a=.4+.6*Math.abs(Math.sin(t/900*s.z+s.p));g.globalAlpha=a;g.fillStyle=s.r>1.2?'#cbbcff':'#fff';g.beginPath();g.arc(s.x-mx*30*s.z,s.y-my*30*s.z,s.r,0,6.3);g.fill()});
+if(!RM){if(!sh&&Math.random()<.006)sh={x:Math.random()*W2,y:Math.random()*H2*.4,l:0};if(sh){g.globalAlpha=1;const gr=g.createLinearGradient(sh.x,sh.y,sh.x-sh.l,sh.y-sh.l*.5);gr.addColorStop(0,'#fff');gr.addColorStop(1,'transparent');g.strokeStyle=gr;g.lineWidth=2;g.beginPath();g.moveTo(sh.x,sh.y);g.lineTo(sh.x-sh.l,sh.y-sh.l*.5);g.stroke();sh.x+=14;sh.y+=7;sh.l=Math.min(sh.l+6,110);if(sh.x>W2+120||sh.y>H2)sh=null}}requestAnimationFrame(dr)})(0);
+/* confetti on success */
+const cf=$('cf'),c2=cf.getContext('2d');
+function boom(){if(RM)return;cf.width=innerWidth;cf.height=innerHeight;const C=['#8b8cff','#ff9ad5','#cbbcff','#fff','#58f0b0'];const P=Array.from({length:130},()=>({x:innerWidth/2,y:innerHeight*.6,vx:(Math.random()-.5)*16,vy:-Math.random()*17-4,c:C[Math.random()*5|0],s:Math.random()*7+3,r:Math.random()*6}));let n=0;(function f(){c2.clearRect(0,0,cf.width,cf.height);P.forEach(p=>{p.vy+=.35;p.x+=p.vx;p.y+=p.vy;p.r+=.2;c2.fillStyle=p.c;c2.save();c2.translate(p.x,p.y);c2.rotate(p.r);c2.fillRect(-p.s/2,-p.s/2,p.s,p.s*.6);c2.restore()});if(++n<130)requestAnimationFrame(f);else c2.clearRect(0,0,cf.width,cf.height)})()}
+new MutationObserver(()=>{if($('msg').textContent.indexOf('ส่งออเดอร์แล้ว')===0)boom()}).observe($('msg'),{childList:true,characterData:true,subtree:true});
+})();
+</script>
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {getFirestore,doc,getDoc,setDoc,updateDoc,deleteDoc,collection,onSnapshot,query,orderBy,serverTimestamp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import {getAuth,signInWithEmailAndPassword,signOut,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+/* ===== วางค่า config จาก Firebase ตรงนี้ ===== */
+const CFG={apiKey:"AIzaSyDb6162G373dSUquijdCIGPCtxTZuDnIbw",authDomain:"dizen-8548a.firebaseapp.com",projectId:"dizen-8548a",appId:"1:713474327512:web:fe4963f75c3bf697e268ad"};
+const ADMIN_EMAIL="kaizenshopbycheer@gmail.com";
+const ST=['รอชำระเงิน','รอคิว','กำลังทำ','เสร็จแล้ว'];
+const $=i=>document.getElementById(i);
+const esc=t=>String(t==null?'':t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const say=(el,t)=>{el.textContent=t};
+const ready=!CFG.apiKey.startsWith('PASTE');
+let db=null,auth=null,orders=[];
+if(ready){const app=initializeApp(CFG);db=getFirestore(app);auth=getAuth(app)}
+const act=st=>st==='รอคิว'||st==='กำลังทำ';
+const code=()=>{const a='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';let r='KZ-';const b=crypto.getRandomValues(new Uint8Array(6));b.forEach(x=>r+=a[x%a.length]);return r};
+
+if(!ready){say($('qc'),'-');$('sub').disabled=true;say($('msg'),'ยังไม่ได้ตั้งค่า Firebase ในไฟล์นี้')}
+else{getDoc(doc(db,'meta','stats')).then(s=>{say($('qc'),s.exists()?s.data().active:0)}).catch(()=>{})}
+
+$('f').addEventListener('submit',async e=>{
+  e.preventDefault();if(!ready)return;
+  const f=e.target,v=n=>f.elements[n].value.trim(),id=code(),m=$('msg');
+  $('sub').disabled=true;say(m,'กำลังส่ง...');
+  try{
+    await setDoc(doc(db,'orders',id),{name:v('name'),discord:v('discord'),contact:v('contact'),cat:v('cat'),speed:v('speed'),budget:v('budget'),deadline:v('deadline'),detail:v('detail'),note:v('note'),status:'รอชำระเงิน',createdAt:serverTimestamp()});
+    await setDoc(doc(db,'track',id),{type:v('cat'),status:'รอชำระเงิน'});
+    say(m,'ส่งออเดอร์แล้ว รหัสออเดอร์ของคุณคือ '+id+' (จดไว้เช็กคิว)');f.reset();
+  }catch(err){say(m,'ส่งไม่สำเร็จ ลองใหม่อีกครั้ง หรือติดต่อร้านทาง Discord')}
+  $('sub').disabled=false;
+});
+
+$('qbtn').onclick=async()=>{
+  const v=$('qin').value.trim().toUpperCase(),o=$('qout');if(!v||!ready){o.innerHTML='';return}
+  try{const s=await getDoc(doc(db,'track',v));
+    o.innerHTML=s.exists()?'<div class="res"><b>'+esc(v)+'</b> · '+esc(s.data().type)+' <span class="pill">'+esc(s.data().status)+'</span></div>':'<div class="res note">ไม่พบรหัสออเดอร์นี้ ตรวจสอบอีกครั้ง หรือสอบถามร้านทาง Discord</div>';
+  }catch(e){o.innerHTML='<div class="res note">เช็กไม่สำเร็จ ลองใหม่อีกครั้ง</div>'}
+};
+$('pbtn').onclick=async()=>{
+  const v=$('pin').value.trim().toLowerCase(),o=$('pout');if(!v||!ready){o.innerHTML='';return}
+  try{const s=await getDoc(doc(db,'members',v));
+    o.innerHTML=s.exists()?'<div class="res">แต้มสะสมของ <b>'+esc(s.data().discord)+'</b>: <b>'+Number(s.data().points)+'</b> แต้ม</div>':'<div class="res note">ยังไม่พบรายชื่อสมาชิกนี้ ติดต่อร้านเพื่อสมัครสมาชิก</div>';
+  }catch(e){o.innerHTML='<div class="res note">เช็กไม่สำเร็จ ลองใหม่อีกครั้ง</div>'}
+};
+
+/* ===== หลังบ้าน ===== */
+$('adl').onclick=()=>{$('admin').hidden=false};
+if(location.hash==='#admin')$('admin').hidden=false;
+if(ready){
+  $('lbtn').onclick=async()=>{try{await signInWithEmailAndPassword(auth,$('em').value.trim(),$('pw').value);$('pw').value=''}catch(e){say($('amsg'),'เข้าสู่ระบบไม่สำเร็จ')}};
+  $('lout').onclick=()=>signOut(auth);
+  let unsub=[];
+  onAuthStateChanged(auth,u=>{
+    unsub.forEach(f=>f());unsub=[];
+    const ok=!!u&&u.email===ADMIN_EMAIL;
+    $('login').hidden=ok;$('panel').hidden=!ok;
+    if(!ok){say($('amsg'),u?'บัญชีนี้ไม่มีสิทธิ์':'');return}
+    say($('amsg'),'');
+    unsub.push(onSnapshot(query(collection(db,'orders'),orderBy('createdAt','desc')),s=>{
+      orders=s.docs.map(d=>({id:d.id,...d.data()}));
+      $('atb').innerHTML=orders.map(o=>'<tr><td>'+esc(o.id)+'</td><td>'+esc(o.name)+'<br><span class="note">'+esc(o.discord)+'</span></td><td>'+esc(o.cat)+'<br><span class="note">'+esc(o.speed)+(o.budget?' · '+esc(o.budget)+' บาท':'')+'</span><details><summary class="note">รายละเอียด</summary>'+esc(o.detail)+(o.note?'<br>หมายเหตุ: '+esc(o.note):'')+'<br>ติดต่อ: '+esc(o.contact)+(o.deadline?'<br>กำหนดส่ง: '+esc(o.deadline):'')+'</details></td><td><select data-a="st" data-id="'+esc(o.id)+'" style="padding:4px">'+ST.map(x=>'<option'+(x===o.status?' selected':'')+'>'+x+'</option>').join('')+'</select></td><td><button class="btn ghost sm" data-a="del" data-id="'+esc(o.id)+'" type="button">ลบ</button></td></tr>').join('');
+    }));
+    unsub.push(onSnapshot(collection(db,'members'),s=>{
+      $('amb').innerHTML=s.docs.map(d=>{const m=d.data();return '<tr><td>'+esc(m.discord)+'</td><td>'+Number(m.points)+'</td><td><button class="btn ghost sm" data-a="dm" data-id="'+esc(d.id)+'" type="button">ลบ</button></td></tr>'}).join('');
+    }));
+  });
+  const stats=list=>setDoc(doc(db,'meta','stats'),{active:list.filter(o=>act(o.status)).length});
+  $('panel').addEventListener('change',async e=>{
+    if(e.target.dataset.a!=='st')return;
+    const id=e.target.dataset.id,st=e.target.value,o=orders.find(x=>x.id===id);
+    try{await updateDoc(doc(db,'orders',id),{status:st});await setDoc(doc(db,'track',id),{type:o?o.cat:'',status:st});await stats(orders.map(x=>x.id===id?{...x,status:st}:x))}catch(err){say($('amsg'),'บันทึกไม่สำเร็จ')}
+  });
+  $('panel').addEventListener('click',async e=>{
+    const a=e.target.dataset&&e.target.dataset.a,id=e.target.dataset&&e.target.dataset.id;
+    try{
+      if(a==='del'&&confirm('ลบออเดอร์ '+id+' ?')){await deleteDoc(doc(db,'orders',id));await deleteDoc(doc(db,'track',id));await stats(orders.filter(x=>x.id!==id))}
+      if(a==='dm'&&confirm('ลบสมาชิกนี้?'))await deleteDoc(doc(db,'members',id));
+    }catch(err){say($('amsg'),'ทำรายการไม่สำเร็จ')}
+  });
+  $('madd').onclick=async()=>{
+    const d=$('md').value.trim(),p=parseInt($('mp').value,10);if(!d||isNaN(p))return;
+    try{await setDoc(doc(db,'members',d.toLowerCase()),{discord:d,points:p});$('md').value='';$('mp').value=''}catch(e){say($('amsg'),'บันทึกแต้มไม่สำเร็จ')}
+  };
+}
+</script>
+</body>
+</html>
